@@ -1524,7 +1524,7 @@ function add_type_request(id) {
       <div class="mb-3 ">
         <label for="" class="form-label">Link Icon</label>
         <input type="text" class="form-control" id="rq_icon" name="rq_icon" value="${rq_icon}">
-        <div id="" class="form-text" style="color:red"><i class="bi bi-info-circle-fill"></i>&nbsp;Icon source &nbsp;<i class="bi bi-arrow-right"></i>&nbsp; https://icons8.com/line-awesome </div>
+        <div id="" class="form-text" style="color:red"><i class="bi bi-info-circle-fill"></i>&nbsp;Icon source &nbsp;<i class="bi bi-arrow-right"></i>&nbsp; <a href="https://icons8.com/line-awesome">https://icons8.com/line-awesome</a> </div>
       </div>
       <div class="mb-3 ">
         <label for="" class="form-label">Description</label>
@@ -2411,6 +2411,7 @@ function getDataTicketComplete() {
         });
       } else {
         console.log(output.message);
+        show.innerHTML = `<div class="text-center">Empty!</div>`;
       }
     }
   );

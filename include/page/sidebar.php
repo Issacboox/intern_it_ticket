@@ -3,6 +3,9 @@
         $(window).ready(() => {
         });
     </script>
+    <style>
+
+    </style>
     <section id="sidebar" class="hide">
         <a href="<?=getDataUserPermisionByRolesTypeAndSessionToken('DashboardAdmin') ?'<?=BASEPATH?>home':'';?>" class="brand" style="gap:10px;">
             <!-- <i class='bx bxs-smile'></i> -->
@@ -10,7 +13,7 @@
             <span class="text mt-2">Ticket System</span>
             </a>
         <ul class="side-menu top">
-            <li class="menu-item <?=getDataUserPermisionByRolesTypeAndSessionToken('DashboardAdmin')?'':'d-none';?>" data-menu="<?=BASEPATH?>home">
+            <li class="menu-item" data-menu="<?=BASEPATH?>home">
                 <a href="<?=BASEPATH?>home">
                     <i class='bx bxs-home bx-tada-hover'></i>
                     <span class="text">home</span>

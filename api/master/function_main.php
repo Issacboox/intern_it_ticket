@@ -782,7 +782,7 @@ $styleColor ='color:red';
 
       $txtTimeline.='<tr>
         <td style="vertical-align: baseline;'.$styleColor.'">'.date('Y-m-d H:i',strtotime($timeline['timeline_timestamp'])).'</td>
-        <td><b>'.$timeline['status_title'].'</b><br>
+        <td><b style="'.$styleColor.'">'.$timeline['status_title'].'</b><br>
             <small style="fornt-weight:600;'.$styleColor.'">'.$timeline['timeline_title'].' - '.$timeline['timeline_description'].'</small><br>
             <small style="'.$styleColor.'">By '.$timeline['emp_fname'].'</small>
         </td>
