@@ -1,0 +1,129 @@
+.container1 {
+  margin-top: 40px;
+  font-family: Monaco (monospace);
+  font-size: 16px;
+  font-weight: normal;
+  color: #000000;
+}
+
+.container h3 {
+  font-size: 20px;
+  font-weight: bold;
+
+  text-align: left;
+}
+
+.detail-box h5 {
+  font-size: 15px;
+  text-align: center;
+}
+
+.bg-img {
+  background-image: url("./grey-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-attachment: fixed;
+}
+.container .row .col-md-4 .cardcustom1 {
+  padding: 24px;
+  background-color: rgba(89, 176, 252, 0.401);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  grid-gap: 24px;
+}
+.container .row .col-md-8 .cardcustom2 {
+  padding: 24px;
+  background-color: rgba(150, 202, 247, 0.401);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  grid-gap: 24px;
+}
+
+.report h5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.head h5 {
+  margin-top: 1%;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+p.action {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  background-color: #a47ad3;
+  border-radius: 4px;
+  padding: 2px;
+}
+p.status {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  background-color: #79c76b;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+button.button_file {
+  background-color: #ffd8ea; /* Green */
+  border: none;
+  border-radius: 5px;
+  color: rgb(94, 94, 94);
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: .8rem;
+}
+
+button.button_file:hover{
+  background-color: #b0ebf7; 
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/* Button 6 */
+
+#app-cover {
+  display: table;
+  width: 600px;
+  margin: 80px auto;
+  counter-reset: button-counter;
+}
+
+.row {
+  display: table-row;
+}
+
+.toggle-button-cover {
+  display: table-cell;
+  position: relative;
+  width: 200px;
+  height: 140px;
+  box-sizing: border-box;
+}
+
+.button-cover {
+  height: 100px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 10px 20px -8px #c5d6d6;
+  border-radius: 4px;
+}
+
+.button-cover:before {
+  counter-increment: button-counter;
+  content: counter(button-counter);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #d7e3e3;
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px;
+}
+

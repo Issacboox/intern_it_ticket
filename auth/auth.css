@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* body {
+    background-color: #f0f2f5;
+    font-family: 'Sarabun', sans-serif;
+} */
+
+body {
+    background-color: #fff;
+    color: #212529;
+    font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    font-family: 'Prompt', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    /* background-image: url(5148675.jpg); */
+    background-image: url(01.png);
+    /* background-image: url(rm222batch5-kul-03.jpg); */
+
+    
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card-body h1.title.text-center{
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.login-logo,
+.register-logo {
+    font-size: 2.1rem;
+    font-weight: 300;
+    margin-bottom: .9rem;
+    text-align: center
+}
+
+.login-logo a,
+.register-logo a {
+    color: #495057
+}
+
+.login-page,
+.register-page {
+    align-items: center;
+    background-color: #00000054;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+}
+
+.login-box,
+.register-box {
+    width: 360px
+}
+
+.logo_bt {
+    width: 75px;
+}
+
+.logo_bt_tech {
+    width: 30%;
+}
+
+.title.tech {
+    font-size: 1.5rem;
+}
+
+.txtTitleD {
+    /* font-size: 1.3rem;
+    font-weight: 400; */
+    font-size: 1rem;
+    font-weight: 400;
+    color: #252525;
+}
+
+.inputempCode_signin {
+    /* height: 4rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #5b5b5b;
+    text-align: center;
+    padding-left: 3rem;
+    padding-right: 3rem; */
+    height: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0082c4;
+    text-align: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.txt_subtitle_signin {
+    /* font-weight: 200; */
+    font-weight: 300;
+    font-size: .8rem;
+    text-align: right;
+}
+
+#txtshowEmail {
+    color: #a6a6a6;
+    font-weight: 300;
+}
+.setPandingCenter{
+    max-width: 30rem;
+    margin: auto;
+}
+.txtTitleLogin_t{
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 500;
+    color: #636363;
+}
+
+@media (max-width:576px) {
+    .login-box,
+    .register-box {
+        margin-top: .5rem;
+        width: 90%
+    }
+    .logo_bt {
+        width: 65px;
+    }
+    .logo_bt_tech {
+        width: 50%;
+    }
+    .txtTitleLogin_t{
+        font-size: 1.5rem;
+    }
+}
+
+.login-box .card,
+.register-box .card {
+    margin-bottom: 0
+}
+
+.login-card-body,
+.register-card-body {
+    background-color: #fff;
+    border-top: 0;
+    color: #666;
+    padding: 20px
+}
