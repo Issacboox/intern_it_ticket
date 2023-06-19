@@ -97,9 +97,9 @@ define('BASEPATH','/');
 
     <script>
     $(window).ready(() => {
+        setPathURL_T('<?=BASEPATH?>');
         getDataMySettingPage();
         SETTINGPAGE3 = <?php echo json_encode($_SESSION['permission']) ?>;
-        setPathURL_T('<?=BASEPATH?>');
     });
     </script>
     <title>Ticket System</title>
