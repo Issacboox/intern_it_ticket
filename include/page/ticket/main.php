@@ -123,7 +123,7 @@
 
                         </div>
 
-                        <label class="mt-4"><i class="bi bi-arrow-return-right"></i> Upload File</label>
+                        <label class="mt-4"><i class="bi bi-arrow-return-right"></i> Upload File / Images</label>
                         <div class="col-md-6">
                             <div class="boxs">
                                 <div class="input-box">

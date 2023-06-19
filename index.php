@@ -123,7 +123,7 @@ include("include/page/navbar.php");
         include("include/page/home/main.php");
        
     });
-    Route::add('/ticket', function() {
+    Route::add('/create', function() {
         include("include/page/ticket/main.php");
        
     });
@@ -165,10 +165,7 @@ include("include/page/navbar.php");
     Route::add('/type_req', function() {
         include("include/page/setting/type_request.php");
     });
-    Route::add('/tiket_oth', function() {
-        include("include/page/ticket/ticket.php");
-    });
-  
+
   
  
               

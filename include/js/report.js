@@ -139,7 +139,7 @@ function submit_ReportProblem() {
               // upload Success
               Swal.fire({
                 icon:'success',
-                title:"Complete?",
+                title:"Complete",
                 confirmButtonText: "Close",
               }).then((result) => {
                 byId('App-formrequest').classList.remove('ui','form','loading')

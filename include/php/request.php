@@ -208,19 +208,10 @@ function sendEmailOnCreateTicket($token){
     $requestor = getDataSQLv1(1, 'SELECT top  1 * FROM user_emp_view WHERE emp_id=?', array($request['requestor_id']));
     $dataResponder = getDataSQLv1(1, 'SELECT top 1 * FROM user_emp_view WHERE emp_id=?', array($request['request_responder']));
     foreach($dataResponder AS $emp){
-            $Email = 'nurarat0024@gmail.com';
-            $Name = 'User Test';
-            // if(count($requestor)>0){
-            //    $dataAPITOServer8 = array(
-            //       'toMail' => base64_encode($Email),
-            //       'toName' => encrypt($keyAPI, base64_encode($Name)),
-            //       'from' => encrypt($keyAPI, base64_encode($requestor[0]['emp_fname'] . ' ' . $requestor[0]['emp_lname'])),
-            //       'subject' => encrypt($keyAPI, base64_encode($requestor[0]['emp_fname'] . ' Create Ticket  '.$request['type_name']. ' #'.$request['request_workNo']. ' - '.$request['request_title'])),
-            //       'html' => encrypt($keyAPI, base64_encode(createHTMLEmailToStaff($token)))
-            //   ); 
-            //   $dt = callAPISendMail($dataAPITOServer8);
-            // }
-
+            // $Email = 'nurarat0024@gmail.com';
+            // $Name = 'User Test';
+            $Email = $requestor[0]['emp_email'];
+            $Name = $requestor[0]['emp_fname'];
 
 
             if(count($requestor)>0){
@@ -236,6 +227,7 @@ function sendEmailOnCreateTicket($token){
                 array_push($arrFile,array('./include/uploads/'.$file['file_path'].$file['file_name'],$file['file_name']));
               }
               array_push($arrTo,array('mail'=>$Email,'name'=>$Name));
+              array_push($arrTo,array('mail'=>$emp['emp_email'],'name'=>$emp['emp_fname']));
 
               // array_push($arrCC,array('mail'=>'it@btm.co.th','name'=>'IT Ticket'));
               array_push($arrCC,array('mail'=>'patipan@btm.co.th','name'=>'IT Ticket'));

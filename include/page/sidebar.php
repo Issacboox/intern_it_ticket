@@ -16,8 +16,8 @@
                     <span class="text">home</span>
                 </a>
             </li>
-            <li class="menu-item" data-menu="<?=BASEPATH?>ticket">
-                <a href="<?=BASEPATH?>ticket">
+            <li class="menu-item" data-menu="<?=BASEPATH?>create">
+                <a href="<?=BASEPATH?>create">
                     <i class='bx bxs-report bx-tada-hover'></i>
                     <span class="text">Create Ticket</span>
                 </a>
