@@ -7,7 +7,7 @@ $(window).ready(() => {
 </script>
 <link rel="stylesheet" type="text/css" href="<?=BASEPATH?>include/css/ticket.css">
 <section id="content">
-    <main>
+    <main id="loadingDiv">
         <div class="head-title">
             <div class="left">
                 <h1>History</h1>

@@ -58,7 +58,7 @@ $(window).ready(() => {
                             <option selected>All</option>
                             <option value="2">Assigned</option>
                             <option value="4">Inprocess</option>
-                            <option value="3">Complete</option>
+                            <option value="Complete">Complete only</option>
                         </select>
                     </div>
                     <div class="col-md-3 col-lg-2">

@@ -280,8 +280,13 @@ function getCurrentJobRequest($type, $dataAPI, $dataoption) {
     // $condition2 = '';
     // $condition.=' AND it_request.request_status ='.$dataAPI['filterstatus'];
 
-    if($dataAPI['filterstatus']!= 'All'){
+    if($dataAPI['filterstatus']!= 'All' && $dataAPI['filterstatus'] != 'Complete' ){
       $condition1.=' AND it_request.request_status ='.$dataAPI['filterstatus'];
+    }else{
+      $condition1.=' AND it_request.request_status != 3';
+    }
+    if($dataAPI['filterstatus'] == 'Complete' ){
+      $condition1 =' AND it_request.request_status = 3';
     }
 
     $query = 'SELECT * FROM user_emp_view WHERE emp_orgunit=22 AND emp_status = 1';
@@ -293,7 +298,7 @@ function getCurrentJobRequest($type, $dataAPI, $dataoption) {
     LEFT JOIN it_request_type AS tq ON tq.type_id = it_request.request_type
     LEFT JOIN user_emp_view AS ev ON ev.emp_id = it_request.requestor_id
     LEFT JOIN it_assign ON it_assign.assign_request = it_request.request_id
-    WHERE it_request.request_status NOT IN (1,5, 6) 
+    WHERE it_request.request_status NOT IN (1,5,6) 
     AND request_responder = " . $_SESSION['emp_id'] . " AND (request_create_at BETWEEN ? AND ?) " . $condition1 . "  
      ORDER BY it_request.request_create_at DESC";
 

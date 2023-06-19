@@ -348,7 +348,8 @@ function createHTMLEmailToStaff($token){
     $dataResponder = getDataSQLv1(1, 'SELECT top 1 * FROM user_emp_view WHERE emp_id=?', array($request['request_responder']));
     $dataFile = getDataSQLv1(1, 'SELECT  * FROM it_uploadfile WHERE file_ref=?', array($request['request_token']));
     $TXTFile = '';
-    $domain = 'https://it.btm.co.th/';
+    // $domain = 'https://it.btm.co.th/';
+    $domain  = $_SERVER['SERVER_NAME'] . "/itticket";
     
     foreach($dataFile AS $file){
       $TXTFile.='<div><a  href="'.$domain.'include/uploads/'.$file['file_path'].$file['file_name'].'">'.$file['file_name'].' &#128209; </a></div>';
@@ -366,7 +367,8 @@ function createHTMLEmailToStaff($token){
     }
 
    
-
+    // $doamin  = $_SERVER['SERVER_NAME'] . "/itticket/";
+  
   
   return '<!DOCTYPE html>
   <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
@@ -540,6 +542,7 @@ function createHTMLEmailToStaff($token){
                                                                           <p style="margin: 0;">please wait a moment.
                                                                           We will repair it as soon as possible.  </p>
                                                                       </div>
+                                                                      
                                                                   </td>
                                                               </tr>
                                                           </table>
@@ -660,10 +663,16 @@ function createHTMLEmailToStaff($token){
                                                           <td>'.$TXTFile.'</td>
                                                       </tr>
                                                       </table>
+                                                      <a href="https://'. $domain .' " style="text-decoration:none">
+                                                        <p style="text-align:center;background:red;color: #ffffff;font-size: 15px;font-weight: bold;line-height: 110%;text-decoration: none;text-transform: none;padding: 10px;border-radius: 10px;max-width: 336px;margin: auto;margin-top: 8px; margin-bottom: 30px; ">
+                                                            เข้าสู่ระบบเพื่อดูรายละเอียดคำขอนี้
+                                                    </p>
+                                                </a>
                                                   </td>
                                               </tr>
                                           </tbody>
                                       </table>
+                                      
                                   </td>
                               </tr>
                           </tbody>
@@ -744,10 +753,12 @@ function createEmailNotifyOnUpdateStatus($id){
     WHERE timeline_refid = ? order by timeline_timestamp asc', array($id));
 
     $TXTFile = '';
-    $domain = 'https://it.btm.co.th/';
-    
+    // $domain = 'https://it.btm.co.th/';
+    $domain  = $_SERVER['SERVER_NAME'] . "/itticket";
+
+
     foreach($dataFile AS $file){
-      $TXTFile.='<div><a  href="'.$domain.'include/uploads/'.$file['file_path'].$file['file_name'].'">'.$file['file_name'].' &#128209; </a></div>';
+      $TXTFile.='<div><a  href="'.$domain.'/include/uploads/'.$file['file_path'].$file['file_name'].'">'.$file['file_name'].' &#128209; </a></div>';
     }
 
     $nameResponder = '';
@@ -760,20 +771,27 @@ function createEmailNotifyOnUpdateStatus($id){
     if($request['request_urgent']==1){
       $txt1 = 'ต้องการภายใน | '.$request['Duedate'].' เวลา '.$request['Duetime'].'น.';
     }
+    $key = 0;
     $txtTimeline = '';
     foreach($dataTimeline AS $timeline){
-      $txtTimeline.='<tr>
-        <td style="vertical-align: baseline;">'.date('Y-m-d H:i',strtotime($timeline['timeline_timestamp'])).'</td>
-        <td><b>'.$timeline['status_title'].'</b><br>
-            <small style="color:grey;fornt-weight:600;">'.$timeline['timeline_title'].' - '.$timeline['timeline_description'].'</small><br>
-            <small>By '.$timeline['emp_fname'].'</small>
-        </td>
+$styleColor ='';
+$key++;
+if($key == count($dataTimeline)){
+$styleColor ='color:red';
+}
 
-      </tr>';
+      $txtTimeline.='<tr>
+        <td style="vertical-align: baseline;'.$styleColor.'">'.date('Y-m-d H:i',strtotime($timeline['timeline_timestamp'])).'</td>
+        <td><b>'.$timeline['status_title'].'</b><br>
+            <small style="fornt-weight:600;'.$styleColor.'">'.$timeline['timeline_title'].' - '.$timeline['timeline_description'].'</small><br>
+            <small style="'.$styleColor.'">By '.$timeline['emp_fname'].'</small>
+        </td>
+      </tr>
+      ';
     }
 
    
-
+    // $doamin  = $_SERVER['SERVER_NAME'] . "/itticket/";
   
   return '<!DOCTYPE html>
   <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
@@ -947,6 +965,7 @@ function createEmailNotifyOnUpdateStatus($id){
                                                                           <p style="margin: 0;">please wait a moment.
                                                                           We will repair it as soon as possible.  </p>
                                                                       </div>
+                                                                   
                                                                   </td>
                                                               </tr>
                                                           </table>
@@ -1077,6 +1096,11 @@ function createEmailNotifyOnUpdateStatus($id){
                                                           '.$txtTimeline.'
                                                         
                                                       </table>
+                                                      <a href="https://'. $domain .' " style="text-decoration:none">
+                                                      <p style="text-align:center;background:red;color: #ffffff;font-size: 15px;font-weight: bold;line-height: 110%;text-decoration: none;text-transform: none;padding: 10px;border-radius: 10px;max-width: 336px;margin: auto;margin-top: 8px; margin-bottom: 30px; ">
+                                                          เข้าสู่ระบบเพื่อดูรายละเอียดคำขอนี้
+                                                  </p>
+                                              </a>
                                                   </td>
                                               </tr>
                                           </tbody>

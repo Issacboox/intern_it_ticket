@@ -397,7 +397,7 @@ function rejectTicket(id) {
       
     }).then((result) => {
       if (result.isConfirmed) {
-        connectApi("getdata/CurrentJobRequest", { type: "reject", data: dataAPI, dataoption: 0 }, "", function (output) {
+        connectApi("getdata/CurrentJobRequest", { type: "reject", data: dataAPI, dataoption: 0 }, "loadingDiv", function (output) {
           console.log(output);
           if (output.status == 200) {
             Swal.fire({
@@ -563,15 +563,19 @@ function getDataHistoryRequest() {
                  <div class="footer d-flex flex-wrap ">
                       <div class="option d-flex borderRight selectemp_respond">
                             <div class="icon"><i class="bi bi-person-rolodex"></i></div>
-                              <select class="form-select form-select-sm" id="emp_respond_${type.request_id}" name="emp_respond" ${getdatasettingByKey('ManageTicket') ? `` : `disabled`}>${optionRespon}</select>
+                            <select class="form-select form-select-sm" id="emp_respond_${type.request_id}" name="emp_respond" ${getdatasettingByKey('ManageTicket') ? '' : 'disabled'} ${type.request_status != 2 ? 'disabled' : ''}>
+                            ${optionRespon}
+                          </select>
                                   <button class="saveChangeBtn" id="saveButton_${type.request_id}" style="display: none;" onclick="saveResponderedit('${type.request_id}')">Save Change</button>
                                       </div>
-                                      
+                                      <div class="tagAlertInprocess">
+                          ${type.request_status == 4 ? '<p style="color:red" class="ms-3">This ticket is currently being handled!</p>' : ''}
+                          </div>
                                       <div class="floatRight buttonmodified">
                                       <div class="file-box">
                                     ${txtFile !== " " ? txtFile : ``}
                               </div>
-                              ${getdatasettingByKey('ManageTicket') ? `
+                              ${getdatasettingByKey('ManageMyJob') ? `
                                <div class="mobileSize">
                             <a href="#" class="forMobile"><button class="commentBtn d-none" onclick="CommentTicket(${type.request_id},'${type.request_status}')">Comment</button></a>
                             ${request_responder!=type.myuserId?`<a href="#"  class="forMobile"><button class="Choosebtn" ${type.request_status != 2 ? 'style="display:none;"' : ''} onclick="chooseJob(${type.request_id})"><i class="fas fa-hand-pointer"></i> Choose Job</button></a>`:``}` : ``}
@@ -807,7 +811,7 @@ function updateTypeticket(id){
         connectApi(
           'getdata/HistoryRequest',
           { type: 'edit', data: dataAPI, dataoption: 0 },
-          '',
+          'loadingDiv',
           function (output) {
             console.log(output);
             if (output.status == 200) {
@@ -2290,7 +2294,7 @@ function getDataTicketComplete() {
   connectApi(
     "getdata/TicketComplete",
     { type: "forcheck", data: dataAPI, dataoption: 0 },
-    "",
+    "loadingDiv",
     function(output) {
       console.log(output);
       if (output.status == 200) {
@@ -2368,10 +2372,10 @@ function getDataTicketComplete() {
                     </div>
                     <div class="mt-2 description"><p><small>${Complete.request_description}</small></p></div>
                     
-                    <div class="alert alert-light" role="alert">
+                    <div class="alert alert-light" ${feedbackStyle} role="alert">
                           <h><small>Feedback :${Complete.request_comment}</small></h>
-                          <div class="workNo borderRight" ${feedbackStyle}><small>Hour Service Rate : ${rating}</small></div>
-                          <div class="workNo" ${feedbackStyle}><small>Service Rate : ${service}</small></div>
+                          <div class="workNo borderRight" ><small>Hour Service Rate : ${rating}</small></div>
+                          <div class="workNo"}><small>Service Rate : ${service}</small></div>
                     </div>
                       <div class="detail">
                       <div class="workNo borderRight">#${Complete.Ticket_No}</div>

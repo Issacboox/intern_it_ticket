@@ -24,7 +24,7 @@ $(window).ready(() => {
             <div class="left col-md-12">
                 <h1><img  class="imgGifforAll" src="https://media0.giphy.com/media/kinlAqef3yqTIj9PyB/giphy.gif?cid=6c09b9527fb75b33e6639b97c83a8cbe2785baadb533ec90&ep=v1_internal_gifs_gifId&rid=giphy.gif&ct=s"
                         width="3%"> All Ticket</h1>
-                        <div class="dropdown float-end gap-2 <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') && ('ManageMyJob') ?'':'d-none';?>">
+                        <div class="dropdown float-end gap-2 <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageMyJob') ?'':'d-none';?>">
 
                     <button class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-sort-down">&nbsp;</i> All Ticket
@@ -49,7 +49,7 @@ $(window).ready(() => {
         </div>
         <hr>
 
-        <ul class="boxdash <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') && ('ManageMyJob') ?'':'d-none';?>" id="empdash">
+        <ul class="boxdash <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') ?'':'d-none';?>" id="empdash">
         </ul>
 
 
@@ -67,10 +67,10 @@ $(window).ready(() => {
                         <select id="ticketfilterType" onchange="getDataHistoryRequest()" class="form-select">
                             <option selected>All</option>
                             <option value="2">Assigned</option>
-                            <option value="4">In process</option>
+                            <option value="4">Inprocess</option>
                         </select>
                     </div>
-                    <div class="col-md-3 col-lg-2 <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') && ('ManageMyJob') ?'':'d-none';?>">
+                    <div class="col-md-3 col-lg-2 <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageMyJob') ?'':'d-none';?>">
                         <label class="">Employee </label>
                         <select id="ticketfilterEmp" onchange="getDataHistoryRequest()" class="form-select"></select>
                     </div>

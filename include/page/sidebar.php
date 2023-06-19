@@ -4,13 +4,13 @@
         });
     </script>
     <section id="sidebar" class="hide">
-        <a href="<?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') && ('ManageMyJob') ?'<?=BASEPATH?>home':'';?>" class="brand" style="gap:10px;">
+        <a href="<?=getDataUserPermisionByRolesTypeAndSessionToken('DashboardAdmin') ?'<?=BASEPATH?>home':'';?>" class="brand" style="gap:10px;">
             <!-- <i class='bx bxs-smile'></i> -->
             <img src="<?=BASEPATH?>include\page\ticket.jpg" width="11%" class="mt-2 ms-3 me-2 customLogo">
             <span class="text mt-2">Ticket System</span>
             </a>
         <ul class="side-menu top">
-            <li class="menu-item <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket')?'':'d-none';?>" data-menu="<?=BASEPATH?>home">
+            <li class="menu-item <?=getDataUserPermisionByRolesTypeAndSessionToken('DashboardAdmin')?'':'d-none';?>" data-menu="<?=BASEPATH?>home">
                 <a href="<?=BASEPATH?>home">
                     <i class='bx bxs-home bx-tada-hover'></i>
                     <span class="text">home</span>
@@ -49,7 +49,7 @@
                 </a>
             </li> -->
            
-            <li class="menu-item <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket')?'':'d-none';?>" data-menu="<?=BASEPATH?>setting">
+            <li class="menu-item <?=getDataUserPermisionByRolesTypeAndSessionToken('SettingPage')?'':'d-none';?>" data-menu="<?=BASEPATH?>setting">
                 <a href="<?=BASEPATH?>setting ">
                     <i class='bx bxs-cog bx-tada-hover'></i>
                     <span class="text">Settings</span>

@@ -33,7 +33,7 @@ $(window).ready(() => {
         <ul class="box-info" id="homeDashboard">
 
         </ul>
-        <div class="table-data <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') ?'':'d-none';?>">
+        <div class="table-data">
             <div class="order" style="overflow: hidden;">
                 <div class="head">
                     <h4>Top 5 Department</h4>

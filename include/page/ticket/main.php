@@ -92,12 +92,8 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                         
-                        <div class="col-md-6 <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageTicket') && ('ManageMyJob') ?'':'d-none';?>">
+                        <div class="col-md-6 <?=getDataUserPermisionByRolesTypeAndSessionToken('ManageMyJob') ? '' : 'd-none';?>">
                             <label class="mt-4 mb-3"><i class="bi bi-arrow-return-right"></i> Create ticket for another
                                 person</label>
                             <div class="row">
