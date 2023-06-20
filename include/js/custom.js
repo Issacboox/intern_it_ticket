@@ -2336,20 +2336,18 @@ function getDataTicketComplete() {
           });
 
           let rating = "";
-          typeRequest.forEach((star) => {
-            for (let i = 0; i < star.request_rate_service; i++) {
+          // typeRequest.forEach((star) => {
+            for (let i = 0; i < Complete.request_rate_service; i++) {
               rating += `<i class="fas fa-star" style="color: #f3d462;"></i>`;
             }
-          });
-          
-          
+          // });
                 
           let service = "";
-      typeRequest.forEach((star) => {
-        for (let i = 0; i < star.request_rate; i++) {
+      // typeRequest.forEach((star) => {
+        for (let i = 0; i < Complete.request_rate; i++) {
           service += `<i class="fas fa-star" style="color: #f3d462;"></i>`;
         }
-      });
+      // });
 
           
 
