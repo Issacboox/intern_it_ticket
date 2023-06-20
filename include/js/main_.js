@@ -1786,7 +1786,17 @@ function deleteCookie(name) {
 }
 
 function ChangeSidebar(){
-    // let sidebar = byId(`sidebar`)
+
+    
+    let sidebar = byId(`sidebar`)
+    console.log(1)
+    if(mobileAndTabletCheck()){
+        sidebar.classList.add('hide');
+             sidebar.classList.remove('show');
+    }else{
+        sidebar.classList.remove('hide');
+             sidebar.classList.add('show');
+    }
     // console.log(getCookie('sidebar'))
     // if(getCookie('sidebar')){
     //     setCookie('sidebar',getCookie('sidebar')=='hide'?'show':'hide',30);

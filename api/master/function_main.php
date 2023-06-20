@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 date_default_timezone_set("Asia/Bangkok");
 require_once('../../include/php/connect.php');
@@ -313,8 +313,8 @@ function sendmailAttachment($from,$arrTo,$arrCC,$arrFile,$subject,$bodyHtml){
     }
     // $mail->AddAttachment('../../include/file/PatientTransfer/BT2305HC003_4eVaZ.pdf', 'BT2305HC003_4eVaZ.pdf');
 
-    $mail->AddReplyTo('amonrat@bt-midland.com','Admin');
-    $mail->setFrom('amonrat@bt-midland.com',$from);
+    $mail->AddReplyTo('it@btm.co.th','Admin');
+    $mail->setFrom('it@btm.co.th',$from);
     $mail->WordWrap = 50; 
     $mail->IsHTML(true);
     $mail->Subject = $subject;
@@ -352,7 +352,7 @@ function createHTMLEmailToStaff($token){
     $domain  = $_SERVER['SERVER_NAME'] . "/itticket";
     
     foreach($dataFile AS $file){
-      $TXTFile.='<div><a  href="'.$domain.'include/uploads/'.$file['file_path'].$file['file_name'].'">'.$file['file_name'].' &#128209; </a></div>';
+      $TXTFile.='<div><a  href="'.$domain.'/include/uploads/'.$file['file_path'].$file['file_name'].'">'.$file['file_name'].' &#128209; </a></div>';
     }
 
     $nameResponder = '';
@@ -663,7 +663,7 @@ function createHTMLEmailToStaff($token){
                                                           <td>'.$TXTFile.'</td>
                                                       </tr>
                                                       </table>
-                                                      <a href="https://'. $domain .' " style="text-decoration:none">
+                                                      <a href="https://'. $domain .'/ " style="text-decoration:none">
                                                         <p style="text-align:center;background:red;color: #ffffff;font-size: 15px;font-weight: bold;line-height: 110%;text-decoration: none;text-transform: none;padding: 10px;border-radius: 10px;max-width: 336px;margin: auto;margin-top: 8px; margin-bottom: 30px; ">
                                                             เข้าสู่ระบบเพื่อดูรายละเอียดคำขอนี้
                                                     </p>
@@ -719,7 +719,7 @@ function sendEmailNotifyOnUpdateStatus($id){
 
 
               // array_push($arrCC,array('mail'=>'it@btm.co.th','name'=>'IT Ticket'));
-              array_push($arrCC,array('mail'=>'patipan@btm.co.th','name'=>'IT Ticket'));
+            //  array_push($arrCC,array('mail'=>'it@btm.co.th','name'=>'IT Ticket'));
               $sand= sendmailAttachment($from,$arrTo,$arrCC,$arrFile,$subject,$bodyHtml_to);
               // return $sand;
             }
@@ -1096,7 +1096,7 @@ $styleColor ='color:red';
                                                           '.$txtTimeline.'
                                                         
                                                       </table>
-                                                      <a href="https://'. $domain .' " style="text-decoration:none">
+                                                      <a href="https://'. $domain .'/ " style="text-decoration:none">
                                                       <p style="text-align:center;background:red;color: #ffffff;font-size: 15px;font-weight: bold;line-height: 110%;text-decoration: none;text-transform: none;padding: 10px;border-radius: 10px;max-width: 336px;margin: auto;margin-top: 8px; margin-bottom: 30px; ">
                                                           เข้าสู่ระบบเพื่อดูรายละเอียดคำขอนี้
                                                   </p>

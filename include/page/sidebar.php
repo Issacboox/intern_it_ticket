@@ -1,6 +1,7 @@
     <!-- SIDEBAR -->
     <script>
         $(window).ready(() => {
+            ChangeSidebar()
         });
     </script>
     <style>

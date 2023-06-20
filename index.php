@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-ob_start();
-session_start();
-use Steampixel\Route;
-include 'include/Steampixel/Route.php';
-date_default_timezone_set("Asia/Bangkok");
-// require_once('include/php/connect.php');
-require_once('include/php/function-index.php');
-checkloginMaster();
-getDataUserPermisionByRolesTypeAndSessionTokenAll();
 
-// print_r($_SESSION['permission']);
-// print_r($_SESSION['emp_orgunit']);
-// print_r($_SESSION["emp_it_token"]);
+// ob_start();
+session_start();
+
+
+use Steampixel\Route;
+
+require_once('include/php/function-index.php');
+
+
+
+// print_r($_SESSION);
+// // print_r($_SESSION['emp_orgunit']);
+// print_r($_COOKIE['emp_it_token']);
 // echo "<bR><BR>";
 // print_r($_COOKIE);
+    // if(isset($_COOKIE)){
+    //     print_r($_COOKIE);
+    // }
+// isset($_COOKIE['emp'])? $_SESSION["emp"] = $_COOKIE['emp'] : null;
+isset($_COOKIE['emp_token'])? $_SESSION["emp_token"] = $_COOKIE['emp_token'] : null;
+isset($_COOKIE['emp_it_token'])? $_SESSION['emp_it_token'] = $_COOKIE['emp_it_token'] : null;
+isset($_COOKIE['emp_fname'])? $_SESSION["emp_fname"] = $_COOKIE['emp_fname'] : null;
+isset($_COOKIE['emp_lname'])? $_SESSION["emp_lname"] = $_COOKIE['emp_lname'] : null;
 
-// // isset($_COOKIE['emp'])?  $_SESSION["emp"] = $_COOKIE['emp'] : null;
-// // isset($_COOKIE['emp_token'])?  $_SESSION["emp_token"] = $_COOKIE['emp_token'] : null;
-// isset($_COOKIE['emp_it_token'])?  $_SESSION["emp_it_token"] = $_COOKIE['emp_it_token'] : null;
-// // isset($_COOKIE['emp_fname'])?  $_SESSION["emp_fname"] = $_COOKIE['emp_fname'] : null;
-// // isset($_COOKIE['emp_email'])?  $_SESSION["emp_email"] = $_COOKIE['emp_email'] : null;
-// // isset($_COOKIE['emp_id'])?  $_SESSION["emp_id"] = $_COOKIE['emp_id'] : null;
-
-
-
-// // isset($_SESSION["emp_token"])?setcookie('emp_token', $_SESSION["emp_token"], time() + (86400 * 30), "/"):null;
-// isset($_SESSION["emp_fname"])?setcookie('emp_fname', $_SESSION["emp_fname"], time() + (86400 * 30), "/"):null;
-// isset($_SESSION["emp_email"])?setcookie('emp_email', $_SESSION["emp_email"], time() + (86400 * 30), "/"):null;
-// isset($_SESSION["emp_id"])?setcookie('emp_id', $_SESSION["emp_id"], time() + (86400 * 30), "/"):null;
-// isset($_SESSION["emp_it_token"])?setcookie('emp_it_token', $_SESSION["emp_it_token"], time() + (86400 * 30), "/"):null;
+isset($_COOKIE['emp_email'])? $_SESSION["emp_email"] = $_COOKIE['emp_email'] : null;
+isset($_COOKIE['emp_id'])? $_SESSION["emp_id"] = $_COOKIE['emp_id'] : null;
 
 
 
+isset($_SESSION["emp_token"])?setcookie('emp_token', $_SESSION["emp_token"], time() + (86400 * 30), "/"):null;
+isset($_SESSION["emp_fname"])?setcookie('emp_fname', $_SESSION["emp_fname"], time() + (86400 * 30), "/"):null;
+isset($_SESSION["emp_lname"])?setcookie('emp_lname', $_SESSION["emp_lname"], time() + (86400 * 30), "/"):null;
+
+isset($_SESSION["emp_email"])?setcookie('emp_email', $_SESSION["emp_email"], time() + (86400 * 30), "/"):null;
+isset($_SESSION["emp_id"])?setcookie('emp_id', $_SESSION["emp_id"], time() + (86400 * 30), "/"):null;
+isset($_SESSION["emp_it_token"])?setcookie('emp_it_token', $_SESSION["emp_it_token"], time() + (86400 * 30), "/"):null;
+
+// print_r($_SESSION);
+
+
+include 'include/Steampixel/Route.php';
+checkloginMaster();
+getDataUserPermisionByRolesTypeAndSessionTokenAll();
+date_default_timezone_set("Asia/Bangkok");
 
 
 define('BASEPATH','/');
@@ -98,6 +110,7 @@ define('BASEPATH','/');
     <script>
     $(window).ready(() => {
         setPathURL_T('<?=BASEPATH?>');
+        ChangeSidebar();
         getDataMySettingPage();
         SETTINGPAGE3 = <?php echo json_encode($_SESSION['permission']) ?>;
     });

@@ -42,9 +42,9 @@ function checkloginMaster(){
   // global $dbHR,$db;
   $_SESSION['from-page']=$_SERVER['REQUEST_URI'];
 
-  if(isset($_COOKIE['emp_email']) && isset($_COOKIE['emp_token'])){
+  if(isset($_COOKIE['emp_email']) && isset($_COOKIE['emp_it_token'])){
     $_SESSION["emp_email"] = $_COOKIE['emp_email'];
-    $_SESSION["emp_token"] = $_COOKIE['emp_token'];
+    $_SESSION["emp_token"] = $_COOKIE['emp_it_token'];
   }
 
 
@@ -60,21 +60,26 @@ function checkloginMaster(){
       }else{
         // print_r($_SESSION["emp_it_token"]);
         // // isset($_COOKIE['emp_token'])?  $_SESSION["emp_token"] = $_COOKIE['emp_token'] : null;
-// isset($_COOKIE['emp_it_token'])?  $_SESSION["emp_it_token"] = $_COOKIE['emp_it_token'] : null;
-// isset($_COOKIE['emp_fname'])?  $_SESSION["emp_fname"] = $_COOKIE['emp_fname'] : null;
-// isset($_COOKIE['emp_email'])?  $_SESSION["emp_email"] = $_COOKIE['emp_email'] : null;
-// isset($_COOKIE['emp_id'])?  $_SESSION["emp_id"] = $_COOKIE['emp_id'] : null;
+      // isset($_COOKIE['emp_it_token'])?  $_SESSION["emp_it_token"] = $_COOKIE['emp_it_token'] : null;
+      // isset($_COOKIE['emp_fname'])?  $_SESSION["emp_fname"] = $_COOKIE['emp_fname'] : null;
+      // isset($_COOKIE['emp_email'])?  $_SESSION["emp_email"] = $_COOKIE['emp_email'] : null;
+      // isset($_COOKIE['emp_id'])?  $_SESSION["emp_id"] = $_COOKIE['emp_id'] : null;
 
-$_SESSION["emp_profile"]=$dataSelect['emp_profile'];
-$_SESSION["emp_lname"]=$dataSelect['emp_lname'];
+    $_SESSION["emp_profile"]=$dataSelect['emp_profile'];
+    $_SESSION["emp_lname"]=$dataSelect['emp_lname'];
+    $_SESSION["emp_fname"]=$dataSelect['emp_fname'];
+    $_SESSION["emp_it_token"]=$dataSelect['emp_token'];
+    $_SESSION["emp_token"]=$dataSelect['emp_token'];
+
+
 
 
 
 // isset($_SESSION["emp_token"])?setcookie('emp_token', $_SESSION["emp_token"], time() + (86400 * 30), "/"):null;
-  isset($_SESSION["emp_fname"])?setcookie('emp_fname', $_SESSION["emp_fname"], time() + (86400 * 30), "/"):null;
-  isset($_SESSION["emp_email"])?setcookie('emp_email', $_SESSION["emp_email"], time() + (86400 * 30), "/"):null;
-  isset($_SESSION["emp_id"])?setcookie('emp_id', $_SESSION["emp_id"], time() + (86400 * 30), "/"):null;
-  isset($_SESSION["emp_it_token"])?setcookie('emp_it_token', $_SESSION["emp_it_token"], time() + (86400 * 30), "/"):null;
+  // isset($_SESSION["emp_fname"])?setcookie('emp_fname', $_SESSION["emp_fname"], time() + (86400 * 30), "/"):null;
+  // isset($_SESSION["emp_email"])?setcookie('emp_email', $_SESSION["emp_email"], time() + (86400 * 30), "/"):null;
+  // isset($_SESSION["emp_id"])?setcookie('emp_id', $_SESSION["emp_id"], time() + (86400 * 30), "/"):null;
+  // isset($_SESSION["emp_it_token"])?setcookie('emp_it_token', $_SESSION["emp_it_token"], time() + (86400 * 30), "/"):null;
 
       }
     }

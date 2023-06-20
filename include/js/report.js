@@ -127,28 +127,41 @@ function submit_ReportProblem() {
         }
         fetch("./include/php/request.php", {
           method: "POST",
-          body: formData,
+          body: formData
         })
           .then(function (response) {
             console.log(response);
-            return response.json();
-          })
-          .then(function (responseData) {
-            console.log(responseData);
-            if (responseData.status == 200) {
-              // upload Success
-              Swal.fire({
-                icon:'success',
-                title:"Complete",
-                confirmButtonText: "Close",
-              }).then((result) => {
-                byId('App-formrequest').classList.remove('ui','form','loading')
+            //  console.log(JSON.stringify(response));
+            // return response.json();
+            Swal.fire({
+              icon:'success',
+              title:"Complete",
+              confirmButtonText: "Close",
+            }).then((result) => {
+              byId('App-formrequest').classList.remove('ui','form','loading')
 
-                location.reload();
-                // window.location = `?page=managequestion&token=${byId('stage_token').value}`;
-              });
-            }
+              location.reload();
+              // window.location = `?page=managequestion&token=${byId('stage_token').value}`;
+            });
+
+
           })
+          // .then(function (responseData) {
+          //   console.log(responseData);
+          //   // if (responseData.status == 200) {
+          //     // upload Success
+          //     Swal.fire({
+          //       icon:'success',
+          //       title:"Complete",
+          //       confirmButtonText: "Close",
+          //     }).then((result) => {
+          //       byId('App-formrequest').classList.remove('ui','form','loading')
+
+          //       location.reload();
+          //       // window.location = `?page=managequestion&token=${byId('stage_token').value}`;
+          //     });
+          //   // }
+          // })
         // .catch((err) => console.log(err));
       }
     });

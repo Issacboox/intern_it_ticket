@@ -1,9 +1,10 @@
-<?php 
+﻿<?php 
 date_default_timezone_set("Asia/Bangkok");
-//  require_once('connect.php');
+// if(!isset($_SESSION)){ session_start();}
+// ob_start();
 
- require_once('../../api/master/function_main.php');
-  $dateNow = date('Y-m-d H:i:s', time());
+ include_once('../../api/master/function_main.php');
+ $dateNow = date('Y-m-d H:i:s', time());
 
   
 require_once '../PHPMailer/src/Exception.php';
@@ -16,7 +17,7 @@ use PHPMailer\PHPMailer\Exception;
 if(!isset($_SESSION)){ session_start();}
   ob_start();
 
-$dataReturn = array('status'=>404);;
+$dataReturn = array('status'=>404);
 //if(isset($_FILES['files'])){
     $path = '../../include/uploads/formrequest/';
     $path_ = 'formrequest/';
@@ -39,16 +40,8 @@ $dataReturn = array('status'=>404);;
     
     $ticketOt = $_POST['ticketOt'];
     $selectAnotherEmp = $_POST['selectAnotherEmp'];
-    // $TypeSelectEdit = $_POST['TypeSelectEdit'];
-    // $emp =  $_SESSION['emp_id'];
-    // $userId = $emp['emp_id'];
 
     $userId = $_SESSION['emp_id'];
-    // $userId = 1;
-
-
-        //  updateSQL('games_q','q_qtype=?,q_question=?,q_url=?,q_score=?,q_time=?,q_qmain=?,q_lastUpdate=?,q_image=?','q_token=?',array($qType,$q_question,$q_URL,$q_score,$q_time,$q_main,time(),$FileName,$token));
-
 
     $tokenNew =time(). new_token(20);
     $workNo = genWorkRanningNo($typeID);
@@ -75,8 +68,8 @@ $dataReturn = array('status'=>404);;
               }
           }
         }  
-        $responder =0; 
-        $datastaff = getDataSQLv1(1, 'SELECT staff_userId FROM it_staff_fortype WHERE staff_type_id=? AND staff_number=1', array($typeID));
+        $responder =1; 
+        $datastaff = getDataSQLv1(1, 'SELECT staff_userId FROM it_staff_fortype WHERE staff_type_id=? order by staff_number desc', array($typeID));
 
         foreach($datastaff as $staff){
           $responder=$staff['staff_userId'];
@@ -120,83 +113,28 @@ $dataReturn = array('status'=>404);;
 
 
       sendEmailOnCreateTicket($tokenNew);
-        // sendEmailOnUpdateStaff($tokenNew);
-        //  else if ($typeID != 0) {
-        //   updateSQL('it_request','request_type,request_workNo',array($TypeSelectEdit,$workNo));
-        // }
-       
-      //   $keyAPI = "Zz123456FDknhbcstuolnHTmnsdLq7GU0eBG8VFOw_SecretKey_wKyjoqIK1Uw0vryNHHG00098TIWxXcCdC";
-      //   $arrTo = array();
-      //   array_push($arrTo,array('toMail'=>base64_encode('patipan@btm.co.th'),'toName'=>encrypt($keyAPI,base64_encode('patipan'))));
+     
 
-      // $arrayEmail = array(
-      // 'fname'=>'patipan'
-      // ); 
-      //   $newtoken = new_token(10);
-      //   $dataAPITOServer8 = array(
-      //     'arrTo'=>$arrTo,
-      //     'subject'=>encrypt($keyAPI,base64_encode('แจ้งเตือนของรางวัล'.'  '.'('.$newtoken.')')),
-      //     'html'=>encrypt($keyAPI,base64_encode(createTagHTMLEmailApprov($arrayEmail)))
-      //   );
-      //   // เรียกใช้ api
-      //   $returnDataAPI = callAPISendMail($dataAPITOServer8);
-
-
-      // $mail = array();
-
-        $dataReturn = array('status'=>200,'data'=>0);
-echo json_encode($dataReturn);
+$dataReturn = array('status'=>200,'data'=>'this data');
+// $dataReturn = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $resp);
+// $dataReturn = (array) json_decode($result,true);
+// echo json_encode($dataReturn);
 // echo json_encode($mail);
 
 // echo $dataReturn;
+
+echo json_encode($dataReturn);
+// print_r(json_encode($dataReturn));
+// $t = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $t);
+// $t = (array) json_decode($t,true);
+// $t = json_encode($t);
+// echo $t;
 
 function new_file_name($tmp){
   $filename = time()."_".new_token(10).".".$tmp;
 	return $filename;
 }
 
-// function new_token($len){
-//   $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-//   $ret_char = "";
-//   $num = strlen($chars);
-//   for($i = 0; $i < $len; $i++) {
-//       $ret_char.= $chars[rand()%$num];
-//       $ret_char.="";
-//   }
-//   return $ret_char;
-// }
-
-// function getDataSQLv1($type,$tablename,$condition){
-//   global $db;
-//   $DataArray = array();
-//   if($type==1){
-//     $getdata = $db->prepare(''.$tablename.'');
-//     $getdata->execute($condition);
-//     while($dataSelect = $getdata->fetch(PDO::FETCH_ASSOC)){
-//       array_push($DataArray,$dataSelect);
-//     }
-//   }
-//   return $DataArray;
-// }
-// function updateSQL($tablename,$dataupdate,$whereColumn,$condition){
-//   global $db;
-//   $update = $db->prepare("UPDATE  $tablename SET $dataupdate WHERE $whereColumn");
-//   $update->execute($condition);
-//   return true;
-// }
-
-// function insertSQLv2($table,$insertColumn,$condition){
-//   global $db;
-//   $countColimn = explode(",",$insertColumn);
-//   $value = '';
-//   for($i=0;$i<count($countColimn);$i++){
-//       $i>0?  $value.=',' :  null;
-//       $value.='?';
-//   }
-//   $save = $db->prepare("INSERT INTO $table ($insertColumn) VALUES ($value)");
-//   $save->execute($condition);
-//   return $save;
-// }
 
 function sendEmailOnCreateTicket($token){
   global $keyAPI;
@@ -230,38 +168,17 @@ function sendEmailOnCreateTicket($token){
               array_push($arrTo,array('mail'=>$emp['emp_email'],'name'=>$emp['emp_fname']));
 
               // array_push($arrCC,array('mail'=>'it@btm.co.th','name'=>'IT Ticket'));
-              array_push($arrCC,array('mail'=>'patipan@btm.co.th','name'=>'IT Ticket'));
+            //  array_push($arrCC,array('mail'=>'it@btm.co.th','name'=>'IT Ticket'));
               $sand= sendmailAttachment($from,$arrTo,$arrCC,$arrFile,$subject,$bodyHtml_to);
               // return $sand;
             }
 
-
-
-           
-           
-
-
-      
-
-
-
-           
 
     }
 
 
   }
 
-  // $MgrEmail = 'tangjuradit969@gmail.com';
-  //           $MgrName = 'User Test';
-  //           $dataAPITOServer8 = array(
-  //               'toMail' => base64_encode($MgrEmail),
-  //               'toName' => encrypt($keyAPI, base64_encode($MgrName)),
-  //               'from' => encrypt($keyAPI, base64_encode($request['emp_fname'] . ' ' . $request['emp_lname'])),
-  //               'subject' => encrypt($keyAPI, base64_encode($request['emp_fname'] . ' '.$arrStatus[$type].' #' . $token.' '.$remark)),
-  //               'html' => encrypt($keyAPI, base64_encode(createFormEmailRequestWFHApproveNotify($token,$type,$date,$remark)))
-  //           );
-  //           $dt = callAPISendMail($dataAPITOServer8);
 }
 
 
