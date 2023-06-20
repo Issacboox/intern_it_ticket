@@ -519,6 +519,14 @@ function getDataHistoryRequest() {
           </div>
              <div>
               <div class="floatRight"> 
+                <div class="" onclick="checkTimeline(${type.request_id}); return false;" style="border-radius: 1rem;
+                background-color: #ebebeb;
+                padding: 0.25rem 16px;
+                margin-right: .5rem;
+                display: flow-root;
+                align-content: center;
+                cursor: pointer;
+                align-self: flex-end;"><i class="fas fa-stream"></i> Timeline Status</div>
                 ${getdatasettingByKey('ManageTicket') ? `
                 <div class="dropdown">
                   <button class="btn btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -2014,9 +2022,22 @@ function getDataInprocessWork() {
         </div>
         
             <div class="d-flex flex-wrap">
+            
               <div class="head w-100">
-                <div class="header">
+              
+                <div class="header w-100">
+                <div class="float-end">
+                <div class="" onclick="checkTimeline(${Current.request_id}); return false;" style="border-radius: 1rem;
+        background-color: #ebebeb;
+        padding: 0.25rem 16px;
+        margin-right: .5rem;
+        display: flow-root;
+        align-content: center;
+        cursor: pointer;
+        align-self: flex-end;"><i class="fas fa-stream"></i> Timeline Status</div>
+        </div>
                   <div class="title">
+                  
                     <div class="workType">
                     <div class="icontype" style="background-color:${Current.type_color}">
                     <i class="${Current.type_icon}"></i> ${Current.type_name}
@@ -2359,7 +2380,17 @@ function getDataTicketComplete() {
                 </div>
                 <div class="head">
             
-                  <div class="header">
+                  <div class="header w-100">
+                  <div class="float-end">
+                  <div class="" onclick="checkTimeline(${Complete.request_id}); return false;" style="border-radius: 1rem;
+                  background-color: #ebebeb;
+                  padding: 0.25rem 16px;
+                  margin-right: .5rem;
+                  display: flow-root;
+                  align-content: center;
+                  cursor: pointer;
+                  align-self: flex-end;"><i class="fas fa-stream"></i> Timeline Status</div>
+                  </div>
                     <div class="title">
                       <div class="workType">
                       <div class="icontype" style="background-color:${Complete.type_color}">

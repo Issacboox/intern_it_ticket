@@ -83,6 +83,19 @@ $(function() {
     $('#reportrange').daterangepicker({
         datestart: new Date(FILTER_START),
         dateend: new Date(FILTER_END),
+        drops: 'auto',
+                "locale": {
+                    "format": "DD/MM/YY",
+                    "separator": " ถึง ",
+                    "applyLabel": "ตกลง",
+                    "cancelLabel": "ยกเลิก",
+                    "fromLabel": "จาก",
+                    "toLabel": "ถึง",
+                    "customRangeLabel": "เลือกช่วงเวลาเอง",
+                    "weekLabel": "W",
+               
+                    "firstDay": 0
+                },
         ranges: {
             'Today': [moment(), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
